@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-import br.com.impacta.Arranjo;
+import arranjos.Arranjo;
 
 public class ArranjoTest {
 
