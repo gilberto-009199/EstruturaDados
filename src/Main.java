@@ -1,4 +1,8 @@
+import org.junit.internal.TextListener;
+import org.junit.runner.JUnitCore;
+
 import arranjos.Arranjo;
+import test.ArranjoTest;
 
 public class Main {
 
@@ -10,7 +14,10 @@ public class Main {
 		System.out.println(" Min }> " + arranjo.menor());
 		System.out.println(" Max }> " + arranjo.maior());
 		System.out.println(" Sum }> " + arranjo.soma());
-
+        // Chama o junit para testar 
+        JUnitCore junit = new JUnitCore();
+        junit.addListener(new TextListener(System.out));
+        junit.run(ArranjoTest.class);
 	}
 
 }
