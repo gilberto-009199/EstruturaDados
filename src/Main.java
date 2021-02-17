@@ -2,13 +2,14 @@ import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 
+import ListaEncadeada.SimplesLinkedList;
 import arranjos.Arranjo;
 import test.ArranjoTest;
 
 public class Main {
 
 	public static void main(String[] args) {
-
+		/* Arranjos
 		Arranjo arranjo = new Arranjo();
 
 		System.out.println("Resultados: ");
@@ -25,7 +26,15 @@ public class Main {
                             "\n Testes Ignorados: " + result.getIgnoreCount() +
                             "\n Testes executados: " + result.getRunCount() +
                             "\n Tempo: " + result.getRunTime() + "ms");
-
+		 */
+		
+		SimplesLinkedList<String> lista = new SimplesLinkedList<String>();
+		
+		lista.add("Bom dia");
+		lista.add("Bom tarde");
+		lista.add("Bom noite");
+		
+		System.out.println(lista.toString());
 	}
 
 }
