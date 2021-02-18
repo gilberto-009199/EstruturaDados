@@ -8,11 +8,7 @@ public class SimplesLinkedList<T> {
 	private Node<T> node;
 	private int tamanho = 0;
 	
-	
-	
 	public int add(T dado) {
-		int index = tamanho;
-		
 		
 		if(node == null) node = new Node<T>(dado);
 		else {
@@ -33,7 +29,7 @@ public class SimplesLinkedList<T> {
 		
 		tamanho++;
 		
-		return index;
+		return tamanho;
 	}
 	
 	public void addFirst(T dado) {
@@ -41,7 +37,38 @@ public class SimplesLinkedList<T> {
 		
 		nodeTMP.setNext(node);
 		
+		tamanho++;
+		
 		this.node = nodeTMP;
+	}
+	
+	public boolean remove(int index) {
+		
+		Node<T> nodeAtual = node;
+		
+		
+		if(index == 0) {
+			node = node.getNext();
+			return true;
+		}
+		
+		// Busca no vetor a ultima instancia de node 
+		while(nodeAtual.hasNext()){
+			
+			
+			if(index == 1) {
+				
+				nodeAtual.setNext(nodeAtual.getNext()
+										   .getNext()//Pega o proximo elementod a lista
+									);
+				return true;
+			} else nodeAtual = nodeAtual.getNext();
+			
+			index--;
+		}
+		
+		
+		return false;
 	}
 	
 	public String toString() {
@@ -63,5 +90,4 @@ public class SimplesLinkedList<T> {
 		return vetor+"]";
 	}
 	
-
 }

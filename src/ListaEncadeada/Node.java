@@ -13,6 +13,8 @@ public class Node<T> {
 		this.dado = dado;
 	}
 	
+	public Node() {}
+	
 	public T getDado() {
 		return dado;
 	}
@@ -41,7 +43,11 @@ public class Node<T> {
 	public boolean hasPrev() {
 		return prev != null;
 	}
-		
+
+	public boolean isExist() {
+		return dado != null;
+	}
+	
 	// Preciso de algo que não seja getDado kkk
 	public T getValue() {
 		return dado;

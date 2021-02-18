@@ -16,6 +16,11 @@ class SimplesLinkedListTest {
 		lista.add("Bom tarde");
 		lista.add("Bom noite");
 		
+		lista.addFirst("Bom dia2");
+
+		
+		lista.remove(4);
+		
 		System.out.println(lista.toString());
 	}
 
