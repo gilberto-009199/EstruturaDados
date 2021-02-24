@@ -11,17 +11,16 @@ class SimplesLinkedListTest {
 	@Test
 	void test() {
 		SimplesLinkedList<String> lista = new SimplesLinkedList<String>();
-		
+
 		lista.add("Bom dia");
 		lista.add("Bom tarde");
 		lista.add("Bom noite");
-		
+
 		lista.addFirst("Bom dia2");
 
-		
 		lista.remove(4);
-		
-		System.out.println(lista.toString());
+
+		assertEquals("[ Bom dia2, Bom dia, Bom tarde, Bom noite]", lista.toString(),"Lista Linkada Simples Funcionado!");
 	}
 
 }

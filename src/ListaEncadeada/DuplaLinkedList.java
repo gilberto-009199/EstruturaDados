@@ -30,58 +30,64 @@ public class DuplaLinkedList<T> {
 	
 	public int add(T dado) {
 		
-		if(head == null) head = new Node<T>(dado);
-		else {
-			
-			
-			Node<T> nodeAtual = head;
+		
+		// Bem mais facil adicioanr um novo elemento!!
+		Node<T> nodeTMP = tail.getPrev();
 
-			// Busca no vetor a ultima instancia de node 
-			while(nodeAtual.hasNext()){
-				
-				nodeAtual = nodeAtual.getNext();
-				
-			}
-			
-			nodeAtual.setNext(new Node<T>(dado));
-			
-		}
+		tail.setPrev(new Node<T>(dado));
+
+		tail.getPrev().setPrev(nodeTMP);
+
+		nodeTMP.setNext(tail.getPrev());
 		
 		tamanho++;
-		
+
 		return tamanho;
 	}
 	
 	public void addFirst(T dado) {
-		Node nodeTMP = new Node<T>(dado);
 		
-		nodeTMP.setNext(head);
+		if(tamanho == 0) {
+			add(dado);
+			return;
+		}
+		// Bem mais facil adicioanr um novo elemento!!
+		Node<T> nodeTMP = head.getNext();
+
+		head.setNext(new Node<T>(dado));
+
+		head.getNext().setPrev(head);
+		
+		head.getNext().setNext(nodeTMP);
+		
+		nodeTMP.setPrev(head.getNext());
 		
 		tamanho++;
-		
-		this.head = nodeTMP;
 	}
-	
+
 	public boolean remove(int index) {
 		
-		Node<T> nodeAtual = head;
+		Node<T> nodeAtual = head.getNext();
 		
 		
-		if(index == 0) {
-			head = head.getNext();
-			return true;
+		if(tamanho == 0)return true;
+		
+		if( index == 0 ) {
+			head.setNext(head.getNext().getNext());
+			head.getNext().setPrev(head);
 		}
 		
 		// Busca no vetor a ultima instancia de node 
-		while(nodeAtual.hasNext()){
+		while(nodeAtual.hasNext() && !nodeAtual.getNext().equals(head) && !nodeAtual.getNext().equals(tail) ){
 			
 			
-			if(index == 1) {
+			if( index == 1  ) {
 				
 				nodeAtual.setNext(nodeAtual.getNext()
 										   .getNext()//Pega o proximo elementod a lista
 									);
 				return true;
+
 			} else nodeAtual = nodeAtual.getNext();
 			
 			index--;
@@ -92,14 +98,15 @@ public class DuplaLinkedList<T> {
 	}
 	
 	public String toString() {
+		
 		// Valida se esta zerado a lista
-		if(head == null)return "";
+		if(tamanho == 0)return "";
 		
-		String vetor = "[ "+head.getDado().toString();
+		String vetor = "[ "+head.getNext().getDado().toString();
 		
-		Node nodeAtual = head;
+		Node nodeAtual = head.getNext();
 		
-		while(nodeAtual.hasNext()){
+		while(nodeAtual.hasNext() && !nodeAtual.getNext().equals(head) && !nodeAtual.getNext().equals(tail) ){
 			
 			nodeAtual = nodeAtual.getNext();
 			vetor += ", "+nodeAtual.toString();
